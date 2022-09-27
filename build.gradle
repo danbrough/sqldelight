@@ -10,6 +10,7 @@ buildscript {
     maven {
       url 'https://jitpack.io'
     }
+    maven{ url 'https://s01.oss.sonatype.org/content/groups/staging/' }
   }
 
   dependencies {
@@ -41,10 +42,12 @@ spotless {
 
 allprojects {
   repositories {
+
     mavenCentral()
     google()
     maven { url 'https://www.jetbrains.com/intellij-repository/releases' }
     maven { url "https://cache-redirector.jetbrains.com/intellij-dependencies" }
+    maven{ url 'https://s01.oss.sonatype.org/content/groups/staging/' }
   }
 
   tasks.withType(Test).configureEach {

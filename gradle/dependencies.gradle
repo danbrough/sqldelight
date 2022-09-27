@@ -1,5 +1,5 @@
 ext.versions = [
-    kotlin: '1.5.31',
+    kotlin: '1.6.4',
     dokka: '1.4.32',
     kotlinCoroutines: '1.5.2',
     compileSdk: 30,
