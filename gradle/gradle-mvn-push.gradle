@@ -7,8 +7,8 @@ plugins.withId("org.jetbrains.dokka") {
 publishing {
     repositories {
         maven {
-            name = "installLocally"
-            url = "${rootProject.buildDir}/localMaven"
+            name = "M2"
+            url = "${rootProject.buildDir}/../../../build/m2"
         }
     }
 }
