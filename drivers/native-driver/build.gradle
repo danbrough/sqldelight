@@ -22,6 +22,8 @@ kotlin {
   mingwX86()
   mingwX64()
   linuxX64()
+  linuxArm64()
+  linuxArm32Hfp()
   macosArm64()
   iosSimulatorArm64()
   watchosSimulatorArm64()
@@ -83,7 +85,32 @@ kotlin {
     sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
     sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
-      kotlinOptions.freeCompilerArgs += ["-linker-options", "-lsqlite3 -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+      kotlinOptions.freeCompilerArgs += ["-linker-options", "-lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/linuxX64/lib" +
+              " -L/usr/local/kotlinxtras/libs/sqlite/linuxX64/lib" +
+              " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+    }
+  }
+
+  configure([targets.linuxArm64]) {
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+    sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    compilations.test {
+      kotlinOptions.freeCompilerArgs += ["-linker-options", "-lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/linuxArm64/lib" +
+                                         " -L/usr/local/kotlinxtras/libs/sqlite/linuxArm64/lib" +
+                                         " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+    }
+  }
+
+  configure([targets.linuxArm32Hfp]) {
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+    sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    compilations.test {
+      kotlinOptions.freeCompilerArgs += ["-linker-options", "-lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/linuxArm32Hfp/lib" +
+                                         " -L/usr/local/kotlinxtras/libs/sqlite/linuxArm32Hfp/lib" +
+                                         " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
     }
   }
 

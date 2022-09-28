@@ -36,7 +36,7 @@ allprojects {
   repositories {
     mavenCentral()
     google()
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url 'https://s01.oss.sonatype.org/content/groups/staging' }
     maven { url 'https://www.jetbrains.com/intellij-repository/releases' }
     maven { url "https://cache-redirector.jetbrains.com/intellij-dependencies" }
   }
@@ -61,6 +61,7 @@ allprojects {
   }
 
   // https://youtrack.jetbrains.com/issue/KT-46466
+  if (project.hasProperty("signPublications"))
   tasks.withType(org.gradle.plugins.signing.Sign) { signingTask ->
     tasks.withType(org.gradle.api.publish.maven.tasks.AbstractPublishToMaven) { publishTask ->
       publishTask.dependsOn(signingTask)

@@ -25,7 +25,7 @@ kotlin {
     }
     nativeMain {
       dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${deps.versions.kotlinCoroutines.get()}-native-mt") {
+        implementation("org.danbrough.kotlinx:kotlinx-coroutines-core:${deps.versions.kotlinCoroutinesMT.get()}-native-mt") {
           force = true
         }
       }

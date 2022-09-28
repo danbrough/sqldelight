@@ -65,6 +65,8 @@ class MultiplatformConventions : Plugin<Project> {
       macosX64()
       mingwX64()
       linuxX64()
+      linuxArm32Hfp()
+      linuxArm64()
       macosArm64()
       iosSimulatorArm64()
       watchosSimulatorArm64()
