@@ -26,6 +26,9 @@ kotlin {
 
   sourceSets["main"].dependencies {
     api project(':runtime')
+    //shouldn't need this but it's to avoid this bug:
+    //https://youtrack.jetbrains.com/issue/KT-50503
+    implementation 'org.danbrough.kotlinx:atomicfu:0.17.3'
     implementation deps.kotlin.coroutines.core
   }
   sourceSets["test"].dependencies {
