@@ -10,5 +10,14 @@ publishing {
             name = "M2"
             url = "${rootProject.buildDir}/../../../build/m2"
         }
+
+        maven {
+            name = "Sonatype"
+            url = "https://s01.oss.sonatype.org/service/local/staging/deployByRepositoryId/" + System.getenv("SONATYPE_REPO_ID")
+            credentials {
+                username(System.getenv("SONATYPE_USER"))
+                password(System.getenv("SONATYPE_PASSWORD"))
+            }
+        }
     }
 }
