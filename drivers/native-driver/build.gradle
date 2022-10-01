@@ -57,6 +57,9 @@ kotlin {
         implementation project(':drivers:driver-test')
       }
     }
+    nativeAndroidMain {
+      dependsOn(nativeMain)
+    }
     nativeLinuxLikeMain {
       dependsOn(nativeMain)
     }
@@ -119,7 +122,7 @@ kotlin {
   }
 
   configure([targets.androidNativeX64]) {
-    sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
     sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
@@ -130,7 +133,7 @@ kotlin {
   }
 
   configure([targets.androidNativeX86]) {
-    sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
     sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
@@ -141,7 +144,7 @@ kotlin {
   }
 
   configure([targets.androidNativeArm32]) {
-    sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
     sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
@@ -152,7 +155,7 @@ kotlin {
   }
 
   configure([targets.androidNativeArm64]) {
-    sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
     sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
