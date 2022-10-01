@@ -22,7 +22,7 @@ configurations.dockerTestImplementation.extendsFrom(configurations.testImplement
 gradlePlugin {
   plugins {
     sqlDelight {
-      id = 'app.cash.sqldelight'
+      id = 'org.danbrough.sqldelight'
       implementationClass = 'app.cash.sqldelight.gradle.SqlDelightPlugin'
     }
   }
