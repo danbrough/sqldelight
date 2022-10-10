@@ -14,6 +14,9 @@ kotlin {
       dependencies {
         implementation project(':runtime')
         api libs.kotlin.coroutines.core
+        //shouldn't need this but it's to avoid this bug:
+          //https://youtrack.jetbrains.com/issue/KT-50503
+          implementation 'org.danbrough.kotlinx:atomicfu:0.17.3'
       }
     }
     jvmTest {
