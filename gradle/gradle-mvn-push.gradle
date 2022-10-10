@@ -1,8 +1,10 @@
 publishing {
+
     repositories {
+	
         maven {
-            name = "installLocally"
-            url = "${rootProject.buildDir}/localMaven"
+            name = "M2"
+            url = "/usr/local/kotlinxtras/build/m2"
         }
         /**
          * Want to push to an internal repository for testing?

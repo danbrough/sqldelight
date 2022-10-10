@@ -39,7 +39,9 @@ spotless {
 
 allprojects {
   repositories {
+	maven { url 'file:///usr/local/kotlinxtras/build/m2' } 
     mavenCentral()
+    maven { url 'https://s01.oss.sonatype.org/content/groups/staging' }
     google()
     maven { url 'https://www.jetbrains.com/intellij-repository/releases' }
     maven { url "https://cache-redirector.jetbrains.com/intellij-dependencies" }

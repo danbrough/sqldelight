@@ -22,6 +22,7 @@ kotlin {
   mingwX86()
   mingwX64()
   linuxX64()
+  linuxArm64()
   macosArm64()
   iosSimulatorArm64()
   watchosSimulatorArm64()

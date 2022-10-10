@@ -5,7 +5,7 @@ kotlinCoroutines = "1.6.4"
 idea = "211.7628.21" # Android Studio Bumblebee (see https://plugins.jetbrains.com/docs/intellij/android-studio-releases-list.html)
 androidxSqlite = "2.2.0"
 schemaCrawler = "16.18.2"
-stately = "1.2.3"
+stately = "1.2.4-01"
 sqliter = "1.2.1"
 testhelp = "0.6.4"
 sqljs = "1.6.2"
@@ -68,9 +68,9 @@ schemaCrawler-sqlite = { module = "us.fatehi:schemacrawler-sqlite", version.ref 
 
 objectDiff = { module = "de.danielbechler:java-object-diff", version = "0.95" }
 sqliter = { module = "co.touchlab:sqliter-driver", version.ref = "sqliter" }
-stately-core = { module = "co.touchlab:stately-common", version.ref = "stately" }
-stately-concurrency = { module = "co.touchlab:stately-concurrency", version.ref = "stately" }
-stately-collections = { module = "co.touchlab:stately-collections", version.ref = "stately" }
+stately-core = { module = "org.danbrough.touchlab:stately-common", version.ref = "stately" }
+stately-concurrency = { module = "org.danbrough.touchlab:stately-concurrency", version.ref = "stately" }
+stately-collections = { module = "org.danbrough.touchlab:stately-collections", version.ref = "stately" }
 
 testhelp = { module = "co.touchlab:testhelp", version.ref = "testhelp" }
 burst = { module = "com.squareup.burst:burst-junit4", version = "1.2.0" }
