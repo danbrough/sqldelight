@@ -80,7 +80,7 @@ kotlin {
     }
   }
 
-  configure([targets.linuxX64]) {
+  configure([targets.linuxX64,targets.linuxArm32Hfp,targets.linuxArm64,targets.androidNativeArm32,targets.androidNativeArm64,targets.androidNativeX86,targets.androidNativeX64]) {
     sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
     sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
