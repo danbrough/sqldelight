@@ -72,6 +72,9 @@ kotlin {
     linuxMain{
       dependsOn(nativeLinuxLikeMain)
     }
+    androidMain{
+      dependsOn(nativeAndroidMain)
+    }
   }
 
   configure([targets.iosX64, targets.iosArm32, targets.iosArm64, targets.tvosX64, targets.tvosArm64, targets.watchosX86, targets.watchosX64, targets.watchosArm32, targets.watchosArm64, targets.macosX64, targets.macosArm64, targets.iosSimulatorArm64, targets.watchosSimulatorArm64, targets.tvosSimulatorArm64]) {
@@ -117,7 +120,7 @@ kotlin {
   }
 
   configure([targets.androidNativeX64]) {
-    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.androidMain)
     //sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
@@ -128,7 +131,7 @@ kotlin {
   }
 
   configure([targets.androidNativeX86]) {
-    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.androidMain)
    // sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
@@ -139,7 +142,7 @@ kotlin {
   }
 
   configure([targets.androidNativeArm32]) {
-    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.androidMain)
   //  sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
@@ -150,7 +153,7 @@ kotlin {
   }
 
   configure([targets.androidNativeArm64]) {
-    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.androidMain)
    // sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
