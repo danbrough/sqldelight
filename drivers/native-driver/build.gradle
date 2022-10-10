@@ -42,19 +42,13 @@ kotlin {
     commonTest {
       dependencies {
         implementation libs.kotlin.test.common
-        implementation libs.testhelp
+        //implementation libs.testhelp
       }
     }
     nativeMain {
       dependsOn(commonMain)
       dependencies {
         api libs.sqliter
-      }
-    }
-    nativeTest {
-      dependsOn(commonTest)
-      dependencies {
-        implementation project(':drivers:driver-test')
       }
     }
     nativeLinuxLikeMain {
@@ -79,7 +73,7 @@ kotlin {
 
   configure([targets.iosX64, targets.iosArm32, targets.iosArm64, targets.tvosX64, targets.tvosArm64, targets.watchosX86, targets.watchosX64, targets.watchosArm32, targets.watchosArm64, targets.macosX64, targets.macosArm64, targets.iosSimulatorArm64, targets.watchosSimulatorArm64, targets.tvosSimulatorArm64]) {
     sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeDarwinMain)
-    sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    //sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", "-lsqlite3"]
     }
@@ -87,7 +81,7 @@ kotlin {
 
   configure([targets.linuxX64,targets.linuxArm32Hfp,targets.linuxArm64,targets.androidNativeArm32,targets.androidNativeArm64,targets.androidNativeX86,targets.androidNativeX64]) {
     sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
-    sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    //sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", "-lsqlite3 -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
     }
@@ -95,7 +89,7 @@ kotlin {
 
   configure([targets.mingwX64]) {
     sourceSets.getByName("${name}Main").dependsOn(sourceSets.mingwMain)
-    sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    //sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", "-Lc:\\msys64\\mingw64\\lib -L$rootDir\\libs -lsqlite3".toString()]
     }
@@ -103,7 +97,7 @@ kotlin {
 
   configure([targets.mingwX86]) {
     sourceSets.getByName("${name}Main").dependsOn(sourceSets.mingwMain)
-    sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+//    sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
       kotlinOptions.freeCompilerArgs += ["-linker-options", "-Lc:\\msys32\\mingw32\\lib -L$rootDir\\libs -lsqlite3".toString()]
     }
