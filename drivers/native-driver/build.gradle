@@ -54,6 +54,9 @@ kotlin {
     nativeLinuxLikeMain {
       dependsOn(nativeMain)
     }
+    nativeAndroidMain {
+      dependsOn(nativeMain)
+    }
     nativeDarwinMain{
       dependsOn(nativeLinuxLikeMain)
     }
@@ -79,11 +82,81 @@ kotlin {
     }
   }
 
-  configure([targets.linuxX64,targets.linuxArm32Hfp,targets.linuxArm64,targets.androidNativeArm32,targets.androidNativeArm64,targets.androidNativeX86,targets.androidNativeX64]) {
+
+  configure([targets.linuxX64]) {
     sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+   // sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    compilations.test {
+      kotlinOptions.freeCompilerArgs += ["-linker-options", "-lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/linuxX64/lib" +
+              " -L/usr/local/kotlinxtras/libs/sqlite/linuxX64/lib" +
+              " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+    }
+  }
+
+  configure([targets.linuxArm64]) {
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+   // sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    compilations.test {
+      kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/linuxArm64/lib" +
+                                         " -L/usr/local/kotlinxtras/libs/sqlite/linuxArm64/lib" +
+                                         " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+    }
+  }
+
+  configure([targets.linuxArm32Hfp]) {
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.linuxMain)
+  //  sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    compilations.test {
+      kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/linuxArm32Hfp/lib" +
+                                         " -L/usr/local/kotlinxtras/libs/sqlite/linuxArm32Hfp/lib" +
+                                         " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+    }
+  }
+
+  configure([targets.androidNativeX64]) {
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
     //sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
     compilations.test {
-      kotlinOptions.freeCompilerArgs += ["-linker-options", "-lsqlite3 -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+      kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/androidNativeX64/lib" +
+              " -L/usr/local/kotlinxtras/libs/sqlite/androidNativeX64/lib" +
+              " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+    }
+  }
+
+  configure([targets.androidNativeX86]) {
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
+   // sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    compilations.test {
+      kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/androidNativeX86/lib" +
+              " -L/usr/local/kotlinxtras/libs/sqlite/androidNativeX86/lib" +
+              " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+    }
+  }
+
+  configure([targets.androidNativeArm32]) {
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
+  //  sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    compilations.test {
+      kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/androidNativeArm32/lib" +
+              " -L/usr/local/kotlinxtras/libs/sqlite/androidNativeArm32/lib" +
+              " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
+    }
+  }
+
+  configure([targets.androidNativeArm64]) {
+    sourceSets.getByName("${name}Main").dependsOn(sourceSets.nativeAndroidMain)
+   // sourceSets.getByName("${name}Test").dependsOn(sourceSets.nativeTest)
+    compilations.test {
+      kotlinOptions.freeCompilerArgs += ["-linker-options", " -lsqlite3 " +
+              " -L./build/kotlinxtras/sqlite/androidNativeArm64/lib" +
+              " -L/usr/local/kotlinxtras/libs/sqlite/androidNativeArm64/lib" +
+              " -L/usr/lib/x86_64-linux-gnu -L/usr/lib -L/usr/lib64"]
     }
   }
 

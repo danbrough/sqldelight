@@ -5,12 +5,24 @@ import kotlinx.cinterop.alloc
 import kotlinx.cinterop.free
 import kotlinx.cinterop.nativeHeap
 import kotlinx.cinterop.ptr
-import platform.posix.*
-import platform.posix.pthread_mutexattr_tVar
+import platform.posix.pthread_cond_destroy
+import platform.posix.pthread_cond_init
+import platform.posix.pthread_cond_signal
+import platform.posix.pthread_cond_t
+import platform.posix.pthread_cond_wait
+import platform.posix.pthread_mutex_destroy
+import platform.posix.pthread_mutex_init
+import platform.posix.pthread_mutex_lock
+import platform.posix.pthread_mutex_t
+import platform.posix.pthread_mutex_unlock
+import platform.posix.pthread_mutexattr_destroy
+import platform.posix.pthread_mutexattr_init
+import platform.posix.pthread_mutexattr_settype
+import platform.posix.pthread_mutexattr_t
 
 internal actual class PoolLock actual constructor(reentrant: Boolean) {
   private val isActive = AtomicBoolean(true)
-  private val attr = nativeHeap.alloc<pthread_mutexattr_tVar>()
+  private val attr = nativeHeap.alloc<pthread_mutexattr_t>()
     .apply {
       pthread_mutexattr_init(ptr)
       if (reentrant) {

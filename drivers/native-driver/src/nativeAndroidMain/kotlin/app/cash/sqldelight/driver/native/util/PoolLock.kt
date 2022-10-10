@@ -4,9 +4,9 @@ import co.touchlab.stately.concurrency.AtomicBoolean
 import kotlinx.cinterop.alloc
 import kotlinx.cinterop.free
 import kotlinx.cinterop.nativeHeap
+import kotlinx.cinterop.nativeHeap.free
 import kotlinx.cinterop.ptr
 import platform.posix.*
-import platform.posix.pthread_mutexattr_tVar
 
 internal actual class PoolLock actual constructor(reentrant: Boolean) {
   private val isActive = AtomicBoolean(true)
