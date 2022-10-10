@@ -15,7 +15,7 @@ publishing {
          * internalPassword=YOUR_PASSWORD
          */
         maven {
-          name = "internal"
+          name = "SonaType"
           url = providers.gradleProperty("internalUrl")
           credentials(PasswordCredentials)
         }
