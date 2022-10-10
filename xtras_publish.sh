@@ -11,7 +11,7 @@ cd $(dirname "$0")
 #export libs.sonatype.user=$SONATYPE_USER
 #export libs.sonatype.password=$SONATYPE_PASSWORD
 OPTS="-PinternalUrl=https://s01.oss.sonatype.org/service/local/staging/deployByRepositoryId/$SONATYPE_REPO_ID \
-	-PinternalUsername=$SONATYPE_USER  -PinternalPassword=$SONATYPE_PASSWORD"
+	-PSonaTypeUsername=$SONATYPE_USER  -PSonaTypePassword=$SONATYPE_PASSWORD"
 
 if [ "$(uname)" = "Darwin" ]; then
   #need JAVA_HOME to be set

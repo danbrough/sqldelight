@@ -67,7 +67,7 @@ schemaCrawler-tools = { module = "us.fatehi:schemacrawler-tools", version.ref = 
 schemaCrawler-sqlite = { module = "us.fatehi:schemacrawler-sqlite", version.ref = "schemaCrawler" }
 
 objectDiff = { module = "de.danielbechler:java-object-diff", version = "0.95" }
-sqliter = { module = "co.touchlab:sqliter-driver", version.ref = "sqliter" }
+sqliter = { module = "org.danbrough.touchlab:sqliter-driver", version.ref = "sqliter" }
 stately-core = { module = "org.danbrough.touchlab:stately-common", version.ref = "stately" }
 stately-concurrency = { module = "org.danbrough.touchlab:stately-concurrency", version.ref = "stately" }
 stately-collections = { module = "org.danbrough.touchlab:stately-collections", version.ref = "stately" }
